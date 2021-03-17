@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+  <node name="republish" type="republish" pkg="image_transport" output="screen" args="compressed in:=/camera/image_compressed raw out:=/camera/image_raw" />
+</launch>
