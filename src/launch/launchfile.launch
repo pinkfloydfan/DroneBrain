@@ -1,4 +1,9 @@
 <launch>
   <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+  <!-- camera republisher -->
   <node name="republish" type="republish" pkg="image_transport" output="screen" args="compressed in:=/camera/image_compressed raw out:=/camera/image_raw" />
+  <!-- websocket and altitude controller-->
+  <node pkg = "drone_brain" name = "controller" type = "PositionController.py" output = "screen" />
+  <!-- joystick-->
+  <node respawn = "true" pkg = "joy" type = "joy_node" name = "joysticc"/>
 </launch>
